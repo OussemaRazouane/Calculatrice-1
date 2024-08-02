@@ -8,6 +8,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int n1 = 0, n2 = 0;
+  num? result = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,67 +20,116 @@ class _HomeState extends State<Home> {
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
-      body:Center(
-        child:Column(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Text("",style: TextStyle(fontSize:25,fontWeight: FontWeight.w700),),
+                Text(
+                  "$n1",
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.w700),
+                ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     OutlinedButton(
-                      onPressed:(){},
-                      child:const Text("+"),
+                      onPressed: () {
+                        setState(() {
+                          n1++;
+                        });
+                      },
+                      child: const Text("+"),
                     ),
                     OutlinedButton(
-                      onPressed: (){},
-                      child:const Text("-"),
+                      onPressed: () {
+                        setState(() {
+                          n1--;
+                        });
+                      },
+                      child: const Text("-"),
                     ),
-                ],),
-                const Text("",style: TextStyle(fontSize:25,fontWeight: FontWeight.w700),),
+                  ],
+                ),
+                Text(
+                  "$n2",
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.w700),
+                ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     OutlinedButton(
-                      onPressed:(){},
-                      child:const Text("+"),
+                      onPressed: () {
+                        setState(() {
+                          n2++;
+                        });
+                      },
+                      child: const Text("+"),
                     ),
                     OutlinedButton(
-                      onPressed: (){},
-                      child:const Text("-"),
+                      onPressed: () {
+                        setState(() {
+                          n2--;
+                        });
+                      },
+                      child: const Text("-"),
                     ),
-                ],),
-            ],),
-            ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("add +")
+                  ],
+                ),
+              ],
             ),
             ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("-")
-            ),
+                onPressed: () {
+                  setState(() {
+                    result = n1 + n2;
+                  });
+                },
+                child: const Text("Addition +")),
             ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("*")
-            ),
+                onPressed: () {
+                  setState(() {
+                    result = n1 - n2;
+                  });
+                },
+                child: const Text("Substraction -")),
             ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("/")
-            ),
+                onPressed: () {
+                  setState(() {
+                    result = n1 * n2;
+                  });
+                },
+                child: const Text("Multiplication  *")),
             ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("^")
-            ),
+                onPressed: () {
+                  if (n2 == 0) {
+                    setState(() {
+                      result = null;                
+                    });
+                  } else {
+                    setState(() {
+                      result = n1 ~/ n2;
+                    });
+                  }
+                },
+                child: const Text("Division /")),
             Container(
-              width:double.infinity,
+              margin:const EdgeInsets.all(5),
+              width: double.infinity,
               height: 50.0,
-              decoration:const BoxDecoration(color: Colors.lightBlue),
+              decoration:
+                  BoxDecoration(color:const Color.fromARGB(255, 36, 150, 139),borderRadius:BorderRadius.circular(5) ),
               alignment: Alignment.center,
-              child:const Text("="),
+              child: Text("Result = $result",
+                style: const TextStyle(
+                  fontSize: 24,
+                ),
+              ),
             )
-        ],), 
+          ],
+        ),
       ),
     );
   }
