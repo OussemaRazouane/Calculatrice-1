@@ -19,10 +19,17 @@ class _HomeState extends State<Home> {
           style: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
         ),
+        centerTitle: true,
+        actions: const [
+          Icon(Icons.calculate_outlined,size:30),
+          SizedBox(width:120,),
+        ],
+        backgroundColor: Colors.lightBlue.shade200,
       ),
+      backgroundColor: Colors.lightBlue.shade200,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
